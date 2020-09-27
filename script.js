@@ -49,3 +49,11 @@ function createCard(data, index) {
     `;
   
 card.addEventListener('click', () => card.classList.toggle('show-answer'))
+
+//Add to DOM cards
+cardsEl.push(card);
+
+cardsContainer.appendChild(card);
+
+updateCurrentText();
+}
