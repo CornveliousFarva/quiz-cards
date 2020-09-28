@@ -21,7 +21,7 @@ const cardsData = getCardsData()
 
 //Create all cards
 function createCards() {
-    cardsData.forEach((data, index) => createCard(data, index));
+    cardsData.forEach((data, index) => createCards(data, index));
   }
 
 // Create a single card in DOM
