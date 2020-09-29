@@ -10,140 +10,148 @@ const addCardBtn = document.getElementById('add-card');
 const clearBtn = document.getElementById('clear');
 const addContainer = document.getElementById('add-container');
 
-//Keep track of current card
+// Keep track of current card
 let currentActiveCard = 0;
 
-//Store DOM cards
+// Store DOM cards
 const cardsEl = [];
 
-//Store card data
-const cardsData = getCardsData()
+// Store card data
+const cardsData = getCardsData();
 
-//Create all cards
+// const cardsData = [
+//   {
+//     question: 'What must a variable begin with?',
+//     answer: 'A letter, $ or _'
+//   },
+//   {
+//     question: 'What is a variable?',
+//     answer: 'Container for a piece of data'
+//   },
+//   {
+//     question: 'Example of Case Sensitive Variable',
+//     answer: 'thisIsAVariable'
+//   }
+// ];
+
+// Create all cards
 function createCards() {
-    cardsData.forEach((data, index) => createCards(data, index));
-  }
+  cardsData.forEach((data, index) => createCard(data, index));
+}
 
 // Create a single card in DOM
 function createCard(data, index) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-  
-    if (index === 0) {
-      card.classList.add('active');
-    }
-  
-    card.innerHTML = `
-    <div class="inner-card">
-    <div class="inner-card-front">
-      <p>
-        ${data.question}
-      </p>
-    </div>
-    <div class="inner-card-back">
-      <p>
-        ${data.answer}
-      </p>
-    </div>
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  if (index === 0) {
+    card.classList.add('active');
+  }
+
+  card.innerHTML = `
+  <div class="inner-card">
+  <div class="inner-card-front">
+    <p>
+      ${data.question}
+    </p>
   </div>
-    `;
-  
-card.addEventListener('click', () => card.classList.toggle('show-answer'))
+  <div class="inner-card-back">
+    <p>
+      ${data.answer}
+    </p>
+  </div>
+</div>
+  `;
 
-//Add to DOM cards
-cardsEl.push(card);
+  card.addEventListener('click', () => card.classList.toggle('show-answer'));
 
-cardsContainer.appendChild(card);
+  // Add to DOM cards
+  cardsEl.push(card);
 
-updateCurrentText();
+  cardsContainer.appendChild(card);
+
+  updateCurrentText();
 }
 
-//Show number of cards
-function updateCurrentText(){
-    currentEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`
+// Show number of cards
+function updateCurrentText() {
+  currentEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`;
 }
 
-//Show number of cards
-function updateCurrentText(){
-    currentEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`
-}
-
-//Get cards from local storage
-function getCardsData(){
-    const cards = JSON.parse(localStorage.getItem('cards'));
+// Get cards from local storage
+function getCardsData() {
+  const cards = JSON.parse(localStorage.getItem('cards'));
+  return cards === null ? [] : cards;
 }
 
 // Add card to local storage
-function setCardsData(cards){
-    localStorage.setItem('cards', JSON.stringify(cards));
-    window.location.reload()
+function setCardsData(cards) {
+  localStorage.setItem('cards', JSON.stringify(cards));
+  window.location.reload();
 }
 
 createCards();
 
-//Event listeners
+// Event listeners
 
-//Next button
+// Next button
 nextBtn.addEventListener('click', () => {
-    cardsEl[currentActiveCard].className = 'card left';
+  cardsEl[currentActiveCard].className = 'card left';
 
-    currentActiveCard = currentActiveCard + 1;
+  currentActiveCard = currentActiveCard + 1;
 
-    if (currentActiveCard > cardsEl.length - 1){
-        currentActiveCard = cardsEl.length -1
-    }
+  if (currentActiveCard > cardsEl.length - 1) {
+    currentActiveCard = cardsEl.length - 1;
+  }
 
-    cardsEl[currentActiveCard].className = 'card active';
+  cardsEl[currentActiveCard].className = 'card active';
 
-    updateCurrentText();
-})
+  updateCurrentText();
+});
 
-//Previous button
+// Prev button
 prevBtn.addEventListener('click', () => {
-    cardsEl[currentActiveCard].className = 'card right';
-  
-    currentActiveCard = currentActiveCard - 1;
-  
-    if (currentActiveCard < 0) {
-      currentActiveCard = 0;
-    }
-  
-    cardsEl[currentActiveCard].className = 'card active';
-  
-    updateCurrentText();
-  });
+  cardsEl[currentActiveCard].className = 'card right';
 
-//Show add container
-showBtn.addEventListener('click', () =>
-addContainer.classList.add('show'))
+  currentActiveCard = currentActiveCard - 1;
 
-//Hide add container
-hideBtn.addEventListener('click', () =>
-addContainer.classList.remove('show'))
+  if (currentActiveCard < 0) {
+    currentActiveCard = 0;
+  }
 
-//Add new card
+  cardsEl[currentActiveCard].className = 'card active';
+
+  updateCurrentText();
+});
+
+// Show add container
+showBtn.addEventListener('click', () => addContainer.classList.add('show'));
+// Hide add container
+hideBtn.addEventListener('click', () => addContainer.classList.remove('show'));
+
+// Add new card
 addCardBtn.addEventListener('click', () => {
-    const question = questionEl.value;
-    const answer = answerEl.value;
+  const question = questionEl.value;
+  const answer = answerEl.value;
 
-    if(question.trim() && answer.trim()){
-        const newCard = {question, answer};
+  if (question.trim() && answer.trim()) {
+    const newCard = { question, answer };
 
-        createCard(newCard);
+    createCard(newCard);
 
-        questionEl.value = '';
-        answerEl.value=''
+    questionEl.value = '';
+    answerEl.value = '';
 
-        addContainer.classList.remove('show');
+    addContainer.classList.remove('show');
 
-        cardsData.push(newCard);
-        setCardsData(cardsData);
-    }
-})
+    cardsData.push(newCard);
+    setCardsData(cardsData);
+  }
+});
 
-//Clear cards button
+// Clear cards button
 clearBtn.addEventListener('click', () => {
-    localStorage.clear();
-    cardsContainer.innerHTML = '';
-    window.location.reload()
-})
+  localStorage.clear();
+  cardsContainer.innerHTML = '';
+  window.location.reload();
+});
