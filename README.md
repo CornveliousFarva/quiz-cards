@@ -1,8 +1,8 @@
 # quiz-cards
-An app designed to let users make quiz cards to text their knowledge on a given subject
+An app designed to let users make quiz cards to text their knowledge on a given subject.
 
 ## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+As someone who learns well with quiz cards, I felt that this would be a good thing to build to help myself and other users retain knowledge on a given subject or subjects.
 
 ## Build status
 Build status of continus integration i.e. travis, appveyor etc. Ex. - 
