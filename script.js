@@ -75,7 +75,7 @@ function createCard(data, index) {
 
 // Show number of cards
 function updateCurrentText() {
-  currentEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`;
+  cardsEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`;
 }
 
 // Get cards from local storage
