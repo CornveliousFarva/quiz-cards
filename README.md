@@ -5,10 +5,7 @@ An app designed to let users make quiz cards to text their knowledge on a given 
 As someone who learns well with quiz cards, I felt that this would be a good thing to build to help myself and other users retain knowledge on a given subject or subjects.
 
 ## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
-
-<!— [![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master) —!>
+Currently just have basic front-end JavaScript, HTML, and CSS
 
 ## Code style
 If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
@@ -19,13 +16,11 @@ If you're using any code style like xo, standard etc. That will help others whil
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
+Front-end JavaScript, HTML, and CSS with fontawesome.
 
-<!— <b>Built with</b>
-- [Electron](https://electron.atom.io) —!>
 
 ## Features
-What makes your project stand out?
+As of this version, all it does is store cards on the front-end
 
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
@@ -41,13 +36,10 @@ Depending on the size of the project, if it is small and simple enough the refer
 Describe and show how to run the tests with code examples.
 
 ## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+First the user adds a new card, then enters a question, then an answer. The user can then test their knowledge on a question by bringing up a card and flipping over afer having guessed an answer.
 
 ## Contribute
 
-Let people know how they can contribute into your project. 
-
-<1— A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus. —!>
 
 ## Credits
 Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project. 
