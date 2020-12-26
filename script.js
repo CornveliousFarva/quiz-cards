@@ -43,7 +43,7 @@ function createCards() {
 
 // Add a card category
 function cardCategory () {
-  cardCategory.appendChild(( data) )
+  cardCategory.appendChild(( data, index) => createCategory(data, index))
 }
 
 // Create a single card in DOM
