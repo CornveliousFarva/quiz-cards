@@ -9,6 +9,7 @@ const answerEl = document.getElementById('answer');
 const addCardBtn = document.getElementById('add-card');
 const clearBtn = document.getElementById('clear');
 const addContainer = document.getElementById('add-container');
+const cardCategory = document.getElementById('category')
 
 // Keep track of current card
 let currentActiveCard = 0;
@@ -18,6 +19,7 @@ const cardsEl = [];
 
 // Store card data
 const cardsData = getCardsData();
+
 
 // const cardsData = [
 //   {
@@ -39,6 +41,11 @@ function createCards() {
   cardsData.forEach((data, index) => createCard(data, index));
 }
 
+// Add a card category
+function cardCategory () {
+  cardCategory.appendChild(( data) )
+}
+
 // Create a single card in DOM
 function createCard(data, index) {
   const card = document.createElement('div');
@@ -49,13 +56,16 @@ function createCard(data, index) {
   }
 
   card.innerHTML = `
-  <div class="inner-card">
-  <div class="inner-card-front">
+  <div class = "inner-card">
+  <div class = "category">
+    ${data.category}
+  </div>
+  <div class = "inner-card-front">
     <p>
       ${data.question}
     </p>
   </div>
-  <div class="inner-card-back">
+  <div class = "inner-card-back">
     <p>
       ${data.answer}
     </p>
